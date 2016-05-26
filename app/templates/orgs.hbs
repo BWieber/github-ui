@@ -1,10 +1,10 @@
 <h2> Organization List </h2>
 
-  <ul>
-    <li> {{#link-to 'org.repos' 'jquery'}} JQuery {{/link-to}} </li>
-    <li> {{#link-to 'org.repos' 'emberjs'}} Ember {{/link-to}} </li>
-    <li> {{#link-to 'org.repos' 'netflix'}} Netflix {{/link-to}} </li>
-  </ul>
 
+  <ul>
+    {{#each model as |company|}}
+      <li> {{#link-to 'org.repos' company.id }} {{company.id}} {{/link-to}} </li>
+    {{/each}}
+  </ul>
 
 {{outlet}}
