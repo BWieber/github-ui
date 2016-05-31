@@ -1,10 +1,9 @@
 <h2> Organization List </h2>
 
-
   <ul>
     {{#each model as |company|}}
         <li>
-           <button {{action "add" company.id}}>Favorite</button>
+           <button {{action "add" company.id}}> Favorite </button>
            {{#link-to 'org.repos' company.id }} {{company.id}} {{/link-to}}
         </li> <br />
 
