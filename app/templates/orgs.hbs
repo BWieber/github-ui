@@ -3,8 +3,13 @@
 
   <ul>
     {{#each model as |company|}}
-      <li> {{#link-to 'org.repos' company.id }} {{company.id}} {{/link-to}} </li>
+        <li>
+           <button {{action "add" company.id}}>Favorite</button>
+           {{#link-to 'org.repos' company.id }} {{company.id}} {{/link-to}}
+        </li> <br />
+
     {{/each}}
   </ul>
+
 
 {{outlet}}
