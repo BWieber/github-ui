@@ -1,6 +1,8 @@
 <ul>
   {{#each model as |repo|}}
-    <li> {{#link-to 'org.repo.issues' repo.name }} {{repo.name}} {{/link-to}} </li>
+    {{github-repo name=repo.name
+    forks=repo.forks
+    watchers=repo.watchers}}
   {{/each}}
 </ul>
 

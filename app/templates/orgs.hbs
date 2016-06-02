@@ -2,13 +2,19 @@
 
   <ul>
     {{#each model as |company|}}
-        <li>
-           <button {{action "add" company.id}}> Favorite </button>
-           {{#link-to 'org.repos' company.id }} {{company.id}} {{/link-to}}
-        </li> <br />
-
+        {{github-org name=company.id}}
     {{/each}}
   </ul>
+
+  {{social-info
+      name="Mike North"
+      twitter="MichaelLNorth"
+      github='mike-north'
+      on-links-toggle='linksToggled'}}
+
+    {{social-info
+        name="MN"
+        github='mike-north'}}
 
 
 {{outlet}}
