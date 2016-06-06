@@ -4,11 +4,11 @@ export default Ember.Route.extend({
 
   model() {
     return [
-      {id: "logitech"},
+      {id: "python"},
       {id: "ember-cli"},
       {id: "microsoft"},
-      {id: "ruby"},
-      {id: "netflix"},
+      {id: "javascript"},
+      {id: "clojure"},
       {id: "facebook"}
     ]},
 
