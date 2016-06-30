@@ -1,9 +1,11 @@
 <h2> Organization List </h2>
 
   <ul>
-    {{#each model as |company|}}
-        {{github-org name=company.id}}
-    {{/each}}
+    {{#each content as |o|}}
+   {{github-org
+     org=o
+     on-fav-clicked='favoriteClicked'}}
+   {{/each}}
   </ul>
 
   {{social-info
@@ -15,6 +17,5 @@
     {{social-info
         name="MN"
         github='mike-north'}}
-
 
 {{outlet}}

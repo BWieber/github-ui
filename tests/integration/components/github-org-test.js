@@ -5,20 +5,23 @@ moduleForComponent('github-org', 'Integration | Component | github org', {
   integration: true
 });
 
-test('it renders', function(assert) {
+test('it renders with default values', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
 
-  this.render(hbs`{{github-org}}`);
+  this.set('company', 'python');
 
-  assert.equal(this.$().text().trim(), '');
+  this.render(hbs`{{github-org org=company}}`);
+
+  assert.equal(this.$().text().trim(), "[Favorite]");
 
   // Template block usage:
   this.render(hbs`
     {{#github-org}}
-      template block text
+      org=0
+      on-fav-clicked='favoriteClicked'
     {{/github-org}}
   `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$().text().trim(), '[Favorite]');
 });

@@ -1,8 +1,6 @@
 {{yield}}
 
-<li>
-  <button {{action "add" name }}> Favorite </button>
-  {{#link-to 'org.repos' name }} {{name}} {{/link-to}}
-</li>
-
-<br />
+<span {{action 'favoriteWasClicked'}} >
+[{{unless isFavorited 'Favorite' 'Unfavorite'}}]
+</span>
+{{link-to org.id 'org' org.id}}
