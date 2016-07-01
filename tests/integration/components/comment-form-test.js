@@ -5,20 +5,20 @@ moduleForComponent('comment-form', 'Integration | Component | comment form', {
   integration: true
 });
 
-test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+test("should trigger external action on form submit", function(assert) {
 
-  this.render(hbs`{{comment-form}}`);
+  this.set("externalAction", (actual) => {
+    let expected = { comment: "You are not a wizard!" };
+    assert.deepEqual(actual, expected, "submitted value is passsed to external action");
+  });
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
   this.render(hbs`
-    {{#comment-form}}
-      template block text
-    {{/comment-form}}
+    {{comment-form submitComment=(action externalAction)}}
   `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  this.$("textarea").val("You are not a wizard!");
+  this.$("textarea").change();
+
+  this.$("input").click();
+
 });

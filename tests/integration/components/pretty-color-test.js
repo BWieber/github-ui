@@ -36,4 +36,4 @@ test("should be rendered with its color name", function(assert) {
   this.set("colorValue", "green");
 
   assert.equal(this.$().text().trim(), "Pretty Color: green", "updates to green");
-})
+});

@@ -5,20 +5,17 @@ moduleForComponent('github-repo', 'Integration | Component | github repo', {
   integration: true
 });
 
-test('it renders', function(assert) {
+test('it renders with default values', function(assert) {
   // Set any properties with this.set('myProperty', 'value');
   // Handle any actions with this.on('myAction', function(val) { ... });
 
-  this.render(hbs`{{github-repo}}`);
+  this.set('forks', 43);
 
-  assert.equal(this.$().text().trim(), '');
+  this.set("watchers", 15);
 
-  // Template block usage:
-  this.render(hbs`
-    {{#github-repo}}
-      template block text
-    {{/github-repo}}
-  `);
+  this.render(hbs`{{github-repo forks=forks watchers=watchers}}`);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$("h5").text().trim(), `Fork Count: 43  Watcher Count: 15` );
+
+
 });
