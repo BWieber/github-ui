@@ -5,20 +5,35 @@ moduleForComponent('pretty-color', 'Integration | Component | pretty color', {
   integration: true
 });
 
-test('it renders', function(assert) {
-  // Set any properties with this.set('myProperty', 'value');
-  // Handle any actions with this.on('myAction', function(val) { ... });
+test("should change colors", function(assert) {
+  assert.expect(2);
 
-  this.render(hbs`{{pretty-color}}`);
+  this.set('colorValue', 'red');
 
-  assert.equal(this.$().text().trim(), '');
-
-  // Template block usage:
   this.render(hbs`
-    {{#pretty-color}}
-      template block text
-    {{/pretty-color}}
+    {{pretty-color name=colorValue}}
   `);
 
-  assert.equal(this.$().text().trim(), 'template block text');
+  assert.equal(this.$("div").attr("style"), "color: red", "starts as red");
+
+  this.set("colorValue", "blue");
+
+  assert.equal(this.$("div").attr("style"), "color: blue", "updates to blue");
+
 });
+
+test("should be rendered with its color name", function(assert) {
+  assert.expect(2);
+
+  this.set("colorValue", "orange");
+
+  this.render(hbs`
+    {{pretty-color name=colorValue}}
+  `);
+
+  assert.equal(this.$().text().trim(), "Pretty Color: orange", "text starts as orange");
+
+  this.set("colorValue", "green");
+
+  assert.equal(this.$().text().trim(), "Pretty Color: green", "updates to green");
+})
